@@ -1,0 +1,16 @@
+    version: "2.1"
+    services:
+      webtop:
+        image: lscr.io/linuxserver/webtop:fedora-mate #lukaszlach/kali-desktop:xfce-top10
+        container_name: webtop
+        environment:
+          - PUID=1000 # based on id
+          - PGID=1000 # based on group
+          - TZ=America/Chicago # your timezone
+        volumes:
+          - /home/user/webtop/config:/config #home directory
+          - /e/CG-VAK/Webtop/docker_root:/root
+        ports:
+          - 3000:3000
+        shm_size: "2gb"
+        restart: unless-stopped
